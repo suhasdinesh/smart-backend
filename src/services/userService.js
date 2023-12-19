@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 const createUser = async (userData) => {
   const user = new User(userData);
@@ -18,7 +19,11 @@ const findAllUsers = async () => {
   };
   
   const updateUser = async (id, updateData) => {
-    return await User.findByIdAndUpdate(id, updateData, { new: true });
+    let hashedPassword
+    if(updateData.password){
+      hashedPassword = await bcrypt.hash(updateData.password, 10);
+    }
+    return await User.findByIdAndUpdate(id, {...updateData, password : hashedPassword}, { new: true });
   };
   
   const deleteUser = async (id) => {
