@@ -17,4 +17,7 @@ router.put('/:id',ensureAuthenticated, schoolController.updateSchool);
 // Delete a school
 router.delete('/:id',ensureAuthenticated, schoolController.deleteSchool);
 
+//Get Students for a school
+router.get('/get-students/:id',ensureAuthenticated,schoolController.getStudents)
+
 module.exports = router;

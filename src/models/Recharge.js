@@ -9,6 +9,7 @@ const RechargeSchema = new mongoose.Schema({
   amount: {
     type: Number,
     required: true,
+    default : 0,
   },
   // Other fields can be added as needed
 },{timestamps : true});

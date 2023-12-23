@@ -1,4 +1,5 @@
 const School = require('../models/School');
+const Student = require('../models/Student');
 
 const createSchool = async (schoolData) => {
   const school = new School(schoolData);
@@ -20,6 +21,14 @@ const updateSchool = async (id, updateData) => {
 const deleteSchool = async (id) => {
   return await School.findByIdAndDelete(id);
 };
+
+const getStudents = async(id) => {
+  try {
+    return await Student.find({school : id})
+  } catch (error) {
+    throw error
+  }
+}
 
 module.exports = {
   createSchool,

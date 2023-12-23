@@ -1,3 +1,4 @@
+const Contact = require('../models/Contact');
 const Student = require('../models/Student');
 
 const createStudent = async (studentData) => {
@@ -21,10 +22,19 @@ const deleteStudent = async (id) => {
   return await Student.findByIdAndDelete(id);
 };
 
+const getContacts = async (id) => {
+  try {
+    return await Contact.find({student : id})
+  } catch(error) {
+    throw error;
+  }
+}
+
 module.exports = {
   createStudent,
   findAllStudents,
   findStudentById,
   updateStudent,
-  deleteStudent
+  deleteStudent,
+  getContacts
 };

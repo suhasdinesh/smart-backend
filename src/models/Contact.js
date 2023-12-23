@@ -9,7 +9,6 @@ const ContactSchema = new mongoose.Schema({
   name: String,
   phoneNumber: String,
   relation: String,
-  // Other fields can be added as needed
 });
 
 module.exports = mongoose.model('Contact', ContactSchema);

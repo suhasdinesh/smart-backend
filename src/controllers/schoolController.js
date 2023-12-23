@@ -33,7 +33,7 @@ const getSchoolById = async (req, res) => {
 const updateSchool = async (req, res) => {
   try {
     const updatedSchool = await schoolService.updateSchool(req.params.id, req.body);
-    res.json(updatedSchool);
+    res.status(200).json(updatedSchool);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -48,10 +48,21 @@ const deleteSchool = async (req, res) => {
   }
 };
 
+const getStudents = async(req,res) => {
+  try{
+    const students = await schoolService.getStudents(req.params.id)
+    res.status(200).json(students)
+
+  } catch (error){
+    res.status(500).json({message : error.message})
+  }
+}
+
 module.exports = {
   createSchool,
   getAllSchools,
   getSchoolById,
   updateSchool,
-  deleteSchool
+  deleteSchool,
+  getStudents
 };

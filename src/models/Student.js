@@ -11,6 +11,7 @@ const StudentSchema = new mongoose.Schema({
   },
   rfidCardId: String,
   balance: Number,
+  
 },{timestamps : true});
 
 module.exports = mongoose.model('Student', StudentSchema);

@@ -48,10 +48,20 @@ const deleteStudent = async (req, res) => {
   }
 };
 
+const getContacts = async(req,res) => {
+  try{
+    const studentContacts = await studentService.getContacts(req.params.id);
+    res.status(200).json(studentContacts)
+  } catch (error) {
+    res.status(500).json({message : error.message})
+  }
+}
+
 module.exports = {
   createStudent,
   getAllStudents,
   getStudentById,
   updateStudent,
-  deleteStudent
+  deleteStudent,
+  getContacts
 };
