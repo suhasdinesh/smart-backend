@@ -35,5 +35,6 @@ module.exports = {
   findAllSchools,
   findSchoolById,
   updateSchool,
-  deleteSchool
+  deleteSchool,
+  getStudents
 };
